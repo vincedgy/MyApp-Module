@@ -1,0 +1,83 @@
+<h3 ng-show="attendee._id" attendee-title></h3>
+<h3 ng-hide="attendee._id" class="isNotValid">No attendee found for {{attendeeVTID}}</h3>
+
+<div ng-show="attendee._id">
+
+    <form role="form" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" for="attendee.attendeeVTID">AttendeeVTID</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" type="text"
+                       id="attendee.attendeeVTID"
+                       data-ng-model="attendee.attendeeVTID"
+                       readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" for="attendee.title">Titre</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" type="text"
+                       id="attendee.title"
+                       data-ng-model="attendee.title"
+                       readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" for="attendee.firstName">First Name</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" type="text"
+                       id="attendee.firstName"
+                       data-ng-model="attendee.firstName"
+                       readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" for="attendee.lastName">Last Name</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" type="text"
+                       id="attendee.lastName"
+                       data-ng-model="attendee.lastName"
+                       readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" for="attendee.company">Company</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" type="text"
+                       id="attendee.company"
+                       data-ng-model="attendee.company"
+                       readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" for="attendee.phone">Phone</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" type="text"
+                       id="attendee.phone"
+                       data-ng-model="attendee.phone"
+                       readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" for="attendee.email">Email</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" type="text"
+                       id="attendee.email"
+                       data-ng-model="attendee.email"
+                       readonly/>
+            </div>
+        </div>
+
+
+        <button type="button" class="btn btn btn-success" data-ng-click="getSessions()">Sessions</button>
+        <a class="btn btn btn-info" href="#editAttendee/{{attendee._id}}" role="button">Edit</a>
+        <button type="button" class="btn btn btn-primary" data-ng-click="getAttendees()">Back</button>
+    </form>
+</div>
