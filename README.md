@@ -13,7 +13,7 @@ Please check out here : <https:/github.com/vincedgy/MyApp>
 
 # Installation
 
-```js
+```
 npm install
 ```
 
@@ -31,9 +31,15 @@ This are the extra tools needed in order to use and develop this app :
 
 Set proxy for http et https :
 
-```js
+```
 git config --global http.proxy "http://user:password@proxy:tcp"
 git config --global https.proxy "http://user:password@proxy:tcp"
+```
+
+Push the master release to github :
+
+```
+git push --progress origin master --set-upstream
 ```
 
 ## bower :
@@ -42,7 +48,7 @@ Create .bowerrc in static and add proxy settings as well
 
 static/.bowerrc :
 
-```js
+```
 {
     "directory": "components",
     "analytics": false,
@@ -66,7 +72,8 @@ Many thing to do in this app
   - [ ] Audit trail
   - [ ] Separate Admin page
 - [ ] Implement drag&drop 
-- [ ] Animations during transitions
+- [X] Animations during transitions
+- [X] More modularity
 
 # Considerations
 
