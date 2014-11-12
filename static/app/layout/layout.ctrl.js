@@ -66,8 +66,9 @@
     }])
 
     // helloCtrl
-    .controller('HelloCtrl', ['$scope', function ($scope) {
+    .controller('HelloCtrl', ['$scope', 'config', function ($scope, config) {
         $scope.helloMessage = 'Hello World !';
+        $scope.title = config.name + ' v' + config.version;
     }]);
 
 })();

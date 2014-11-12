@@ -61,7 +61,6 @@ static/.bowerrc :
 
 > Complete this part
 
-
 # TODO
 
 Many thing to do in this app

@@ -9,7 +9,7 @@
     /* configurations */
 
     angular
-        .module('app')
+        .module('app.core')
 
         // ngToast general config
         .config(['ngToastProvider', function (ngToast) {
