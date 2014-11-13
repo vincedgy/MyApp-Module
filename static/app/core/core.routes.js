@@ -8,7 +8,7 @@
 
     /* configurations */
 
-    angular.module('app')
+    angular.module('app.core')
 
     // route configurations
     .config(['$routeProvider', 'config', function ($routeProvider, config) {

@@ -19,7 +19,8 @@
 
         // Global config constants for Application
         .constant('config', {
-            'ver': '0.1.0',
+            'name': 'TrainU',
+            'version': '0.3.0b',
             'partial_dir': 'partials',
             'dirs': {
                 'base': 'app/',

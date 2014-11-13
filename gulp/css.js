@@ -11,10 +11,10 @@ gulp.task('css', function () {
         .pipe(sourcemaps.init())
         .pipe(plumber()) // prevents compilation errors from killing gulp
         .pipe(less({
-            paths: ['static/styles']
+            paths: ['static/styles', 'assets']
         }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('static/styles'))
+        .pipe(gulp.dest('assets'))
 });
 
 gulp.task('css:watch', ['css'], function () {

@@ -13,7 +13,7 @@ gulp.task('js', function () {
     return gulp.src(['static/app/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(plumber())
-        .pipe(concat('app.js'))
+        .pipe(concat('app.min.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(sourcemaps.write())

@@ -14,4 +14,5 @@ fs.readdirSync(__dirname + '/gulp').forEach(function (module) {
 });
 
 gulp.task('build', ['rev']);
-gulp.task('default', ['js:watch', 'css:watch', 'server']);
+gulp.task('default', ['rev', 'js:watch', 'css:watch']);
+//gulp.task('default', ['js:watch', 'css:watch', 'server']);
