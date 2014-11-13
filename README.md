@@ -34,12 +34,17 @@ Set proxy for http et https :
 ```
 git config --global http.proxy "http://user:password@proxy:tcp"
 git config --global https.proxy "http://user:password@proxy:tcp"
+git config --global color.ui true
+git config --global credential.helper wincred
 ```
 
-Push the master release to github :
+Push the master release to github : 
+
+It will need user/password interactive entry
 
 ```
 git push --progress origin master --set-upstream
+git push --progress origin master:master
 ```
 
 ## bower :
@@ -60,6 +65,7 @@ static/.bowerrc :
 ## gulp
 
 > Complete this part
+
 
 # TODO
 
