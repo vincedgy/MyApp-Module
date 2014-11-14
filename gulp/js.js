@@ -21,5 +21,5 @@ gulp.task('js', function () {
 });
 
 gulp.task('js:watch', ['js'], function () {
-    gulp.watch('static/app/**/*.js', ['js'])
+    gulp.watch(['static/app/**/*.js','gulp/*.js'], ['js'])
 });
