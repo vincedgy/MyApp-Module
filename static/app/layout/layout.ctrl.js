@@ -3,72 +3,84 @@
 
     /* controllers for layout */
     angular.module('app.layout')
+        .controller('HeaderCtrl', HeaderCtrl)
+        .controller('FooterCtrl', FooterCtrl)
+        .controller('MainCtrl', MainCtrl)
+        .controller('HelloCtrl', HelloCtrl);
 
+    // --------------------------------------------------------------------------
     // headerCtrl
-    .controller('HeaderCtrl', ['$scope', '$location', function ($scope, $location) {
-        $scope.currentLocation = null;
-        $scope.isActive = function (viewLocation) {
-            if (!$scope.currentLocation) {
-                $scope.currentLocation = $location;
+    /* @ngInject */
+    HeaderCtrl.$inject = ['$location'];
+    function HeaderCtrl($location) {
+        var vm = this;
+        vm.currentLocation = null;
+        vm.isActive = function (viewLocation) {
+            if (!vm.currentLocation) {
+                vm.currentLocation = $location;
             }
-            var simpleLocation = $scope.currentLocation.path().split('/')[1] || '';
+            var simpleLocation = vm.currentLocation.path().split('/')[1] || '';
             return simpleLocation.toLowerCase().indexOf(viewLocation) >= 0;
         }
+    }
 
-    }])
-
-    // footerCtrl
-    .controller('FooterCtrl', ['$rootScope', '$scope', '$location', function ($rootScope, $scope, $location) {
+    // --------------------------------------------------------------------------
+    // FooterCtrl    
+    /* @ngInject */
+    FooterCtrl.$inject = ['$location', '$rootScope'];
+    function FooterCtrl($location,$rootScope) {
+        var vm = this;
         $rootScope.$on('$locationChangeSuccess', function (event) {
-            $scope.actualLocation = $location.path();
-        })
-    }])
+            vm.actualLocation = $location.path();
+        });
+    }
 
+    // --------------------------------------------------------------------------
     // mainCtrl
-    .controller('MainCtrl', ['$scope', 'ngToast', 'SessionSrv', 'Attendee', function ($scope, ngToast, SessionSrv, Attendee) {
-        $scope.helloMessage = 'Hello World !';
-        $scope.message = 'Please welcome to session management';
+    /* @ngInject */
+    MainCtrl.$inject = ['toastr', 'SessionSrv', 'AttendeeSrv', '$scope'];
+    function MainCtrl(toastr, SessionSrv, AttendeeSrv, $scope) {
+        var vm = this;
+        vm.helloMessage = 'Hello World !';
+        vm.message = 'Please welcome to session management';
         // TEST
-        ngToast.create({
-                'content': '<strong>Hello folks !</strong>This is TrainU.'
-                , 'dismissButton': false
-                , 'class': 'info' // warning, danger, success
-            }
-        );
+        toastr.info('Are you the 6 fingered man?');
 
         // Nb Sessions
-        $scope.nbSessions = 0;
-        $scope.eventRefreshNBSession = false;
-        $scope.$watch('eventRefreshNBSession', function() {
-            if ($scope.eventRefreshNBSession) {
+        vm.nbSessions = 0;
+        vm.eventRefreshNBSession = false;
+        $scope.$watch('vm.eventRefreshNBSession', function () {
+            if (vm.eventRefreshNBSession) {
                 SessionSrv.query().$promise.then(function (data) {
-                    $scope.nbSessions = data.length;
+                    vm.nbSessions = data.length;
                 });
             }
-            $scope.eventRefreshNBSession = false;
+            vm.eventRefreshNBSession = false;
         });
-        $scope.eventRefreshNBSession = true;
+        vm.eventRefreshNBSession = true;
 
         // Nb Attendees
-        $scope.nbAttendees = 0;
-        $scope.eventRefreshNBAttendees = false;
-        $scope.$watch('eventRefreshNBAttendees', function() {
-            if ($scope.eventRefreshNBAttendees) {
-                Attendee.query().$promise.then(function (data) {
-                    $scope.nbAttendees = data.length;
+        vm.nbAttendees = 0;
+        vm.eventRefreshNBAttendees = false;
+        $scope.$watch('vm.eventRefreshNBAttendees', function () {
+            if (vm.eventRefreshNBAttendees) {
+                AttendeeSrv.query().$promise.then(function (data) {
+                    vm.nbAttendees = data.length;
                 });
             }
-            $scope.eventRefreshNBAttendees = false;
+            vm.eventRefreshNBAttendees = false;
         });
-        $scope.eventRefreshNBAttendees = true;
+        vm.eventRefreshNBAttendees = true;
+    }
 
-
-    }])
-
+    // --------------------------------------------------------------------------
     // helloCtrl
-    .controller('HelloCtrl', ['$scope', 'config', function ($scope, config) {
-        $scope.helloMessage = 'Hello World !';
-        $scope.title = config.name + ' v' + config.version;
-    }]);
+    /* @ngInject */
+    HelloCtrl.$inject = ['config'];
+    function HelloCtrl(config) {
+        var vm = this;
+        vm.helloMessage = 'Hello World !';
+        vm.title = config.name + ' v' + config.version;
+    }
 
 })();

@@ -13,11 +13,11 @@
         // Core definition and app structure
         'app.core'
 
-        // Layout dependencies
-        , 'app.layout'
-
         // Application features
         , 'app.features'
+
+        // Layout dependencies
+        , 'app.layout'
 
     ]);
 

@@ -1,29 +1,31 @@
 (function () {
     'use strict';
 
-    angular.module('app.session')
-        .controller('AddAttendeesCtrl', ['$scope', '$location', '$routeParams', 'SessionSrv', 'Attendee', 'AttendeesBySessionId', 'config',
-            function ($scope, $location, $routeParams, SessionSrv, Attendee, AttendeesBySessionId, config) {
+    angular
+        .module('app.session')
+        .controller('AddAttendeesCtrl', AddAttendeesCtrl);
 
+            AddAttendeesCtrl.$inject = ['$routeParams', 'SessionSrv', 'AttendeeSrv', 'AttendeesBySessionId'];           
+            function AddAttendeesCtrl ($routeParams, SessionSrv, Attendee, AttendeesBySessionId) {
+                var vm = this;
                 var sessionID = $routeParams._id || undefined;
-                $scope.session = {};
-
-                $scope.available = [];
-                $scope.selected = [];
-                $scope.attendeesOfSession = [];
-                $scope.attendeesAvailable = [];
+                vm.session = {};
+                vm.available = [];
+                vm.selected = [];
+                vm.attendeesOfSession = [];
+                vm.attendeesAvailable = [];
 
                 var init = function () {
                     if (sessionID) {
                         SessionSrv.get({_id: sessionID}, function (session) {
-                            $scope.session = session;
-                            $scope.attendeesOfSession = AttendeesBySessionId.query({'sessionVTID': session.sessionID}) || [];
-                            $scope.attendeesAvailable = Attendee.query() || [];
+                            vm.session = session;
+                            vm.attendeesOfSession = AttendeesBySessionId.query({'sessionVTID': session.sessionID}) || [];
+                            vm.attendeesAvailable = Attendee.query() || [];
                         });
                     }
                 };
 
-                $scope.moveItem = function (item, from, to) {
+                vm.moveItem = function (item, from, to) {
                     console.log('Move item   Item: ' + item + ' From:: ' + from + ' To:: ' + to);
                     //Here from is returned as blank and to as undefined
 
@@ -33,7 +35,7 @@
                         to.push(item);
                     }
                 };
-                $scope.moveAll = function (from, to) {
+                vm.moveAll = function (from, to) {
 
                     console.log('Move all  From:: ' + from + ' To:: ' + to);
                     //Here from is returned as blank and to as undefined
@@ -45,12 +47,12 @@
                 };
 
 
-                $scope.save = function (session) {
+                vm.save = function (session) {
                     alert('TBD');
                 };
 
 
                 // Initialize controller
                 init();
-            }]);
+            }
 })();

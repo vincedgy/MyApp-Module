@@ -19,7 +19,6 @@
         'ngAnimate'
         , 'ngRoute'
         , 'ngSanitize'
-        , 'ngToast'
         , 'ngResource'
 
         /*

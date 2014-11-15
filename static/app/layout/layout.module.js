@@ -19,6 +19,7 @@
         // Layout use service for accessing data
             'app.session'
         ,   'app.attendee'
+
     ]);
 
 })();

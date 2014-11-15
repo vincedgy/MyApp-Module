@@ -5,9 +5,9 @@
         .module('blocks.logger')
         .factory('logger', logger);
 
-    logger.$inject = ['$log', 'ngToast'];
+    logger.$inject = ['$log', 'toastr'];
 
-    function logger($log, ngToast) {
+    function logger($log, toastr) {
         var service = {
             showToasts: true,
 
@@ -24,46 +24,22 @@
         /////////////////////
 
         function error(message, data, title) {
-            ngToast.create({
-                    'content': '<strong>'+title+'</strong>'+message
-                    , 'dismissButton': false
-                    , 'class': 'danger' // warning, danger, success
-                }
-            );
-
+            toastr.error('<strong>'+title+'</strong>'+message);
             $log.error('Error: ' + message, data);
         }
 
         function info(message, data, title) {
-            ngToast.create({
-                    'content': '<strong>'+title+'</strong>'+message
-                    , 'dismissButton': false
-                    , 'class': 'info' // warning, danger, success
-                }
-            );
-
+            toastr.info('<strong>'+title+'</strong>'+message);
             $log.info('Info: ' + message, data);
         }
 
         function success(message, data, title) {
-            ngToast.create({
-                    'content': '<strong>'+title+'</strong>'+message
-                    , 'dismissButton': false
-                    , 'class': 'success' // warning, danger, success
-                }
-            );
-
+            toastr.success('<strong>'+title+'</strong>'+message);
             $log.info('Success: ' + message, data);
         }
 
         function warning(message, data, title) {
-            ngToast.create({
-                    'content': '<strong>'+title+'</strong>'+message
-                    , 'dismissButton': false
-                    , 'class': 'warning' // warning, danger, success
-                }
-            );
-
+            toastr.warning('<strong>'+title+'</strong>'+message);
             $log.warn('Warning: ' + message, data);
         }
     }

@@ -14,7 +14,7 @@
 
     angular
         .module('app.core')
-        //.constant('toastr', toastr)
+        .constant('toastr', toastr)
         //.constant('moment', moment)
 
         // Global config constants for Application

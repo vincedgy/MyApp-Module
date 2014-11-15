@@ -12,13 +12,14 @@
         .module('app.core')
 
         // ngToast general config
-        .config(['ngToastProvider', function (ngToast) {
-            ngToast.configure({
-                verticalPosition: 'middle',
-                horizontalPosition: 'center',
-                timeout: 2000,
-                dismissOnTimeout: true
-            });
-        }]);
+//        .config(['ngToastProvider', function (ngToast) {
+//            ngToast.configure({
+//                verticalPosition: 'middle',
+//                horizontalPosition: 'center',
+//                timeout: 2000,
+//                dismissOnTimeout: true
+//            });
+//        }])
+    ;
 
 })();

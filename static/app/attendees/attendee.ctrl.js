@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app.attendee')
-        .controller('AttendeeCtrl', ['$scope', '$location', '$routeParams', 'Attendee', 'AttendeesBySessionId',
+        .controller('AttendeeCtrl', ['$scope', '$location', '$routeParams', 'AttendeeSrv', 'AttendeesBySessionId',
             function ($scope, $location, $routeParams, Attendee, AttendeesBySessionId) {
 
                 var sessionVTID = $routeParams.sessionVTID || undefined;

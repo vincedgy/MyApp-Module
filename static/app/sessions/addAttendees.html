@@ -1,4 +1,4 @@
-<h3>Add/Remove attendees for session {{session.sessionID}}</h3>
+<h3>Add/Remove attendees for session {{vm.session.sessionID}}</h3>
 
 
     <form role="form" class="form-horizontal" novalidate>
@@ -9,8 +9,8 @@
                 <select size="10" multiple
                         class="form-control"
                         id="availableAttendees"
-                        ng-model="available"
-                        ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in attendeesAvailable">
+                        ng-model="vm.available"
+                        ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesAvailable">
                 </select>
             </div>
 
@@ -18,7 +18,7 @@
                 <button id="moveright"
                         type="button"
                         class="btn btn-default btn-md"
-                        data-ng-click="moveItem(available[0], attendeesAvailable, attendeesOfSession)">
+                        data-ng-click="vm.moveItem(vm.available[0], vm.attendeesAvailable, vm.attendeesOfSession)">
                     <span class="glyphicon glyphicon-arrow-right"></span>
                 </button>
                 <!--<input id="moverightall" type="button" value="Add All Clients" ng-click="moveAll(availableclients,selectedclients)" />-->
@@ -26,7 +26,7 @@
                 <button id="moveleft"
                         type="button"
                         class="btn btn-default btn-md"
-                        data-ng-click="moveItem(selected[0], attendeesOfSession, attendeesAvailable)">
+                        data-ng-click="vm.moveItem(vm.selected[0], vm.attendeesOfSession, vm.attendeesAvailable)">
                     <span class="glyphicon glyphicon-arrow-left"></span>
                 </button>
                 <!--<input id="moveleftall" type="button" value="Remove All Clients" ng-click="moveAll(selectedclients,availableclients)" />-->
@@ -38,23 +38,23 @@
                 <select size="10" multiple
                         class="form-control"
                         id="inSessionAttendees"
-                        ng-model="selected"
-                        ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in attendeesOfSession">
+                        ng-model="vm.selected"
+                        ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesOfSession">
                 </select>
 
             </div>
 
             <!--<div>-->
-            <!--<div>Selected: {{selected}}</div>-->
-            <!--<div>Available: {{available}}</div>-->
+            <!--<div>Selected: {{vm.selected}}</div>-->
+            <!--<div>Available: {{vm.available}}</div>-->
             <!--</div>-->
 
         </div>
 
         <div class="row">
             <div class="input-group">
-                <button class="btn btn btn-warning" data-ng-click="save()">Save</button>
-                <button class="btn btn btn" data-ng-click="cancel()">Cancel</button>
+                <button class="btn btn btn-warning" data-ng-click="vm.save()">Save</button>
+                <button class="btn btn btn" data-ng-click="vm.cancel()">Cancel</button>
             </div>
         </div>
     </form>
