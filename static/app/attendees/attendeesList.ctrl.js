@@ -2,48 +2,52 @@
     'use strict';
 
     angular.module('app.attendee')
-        .controller('AttendeesListCtrl', ['$scope', '$location', '$routeParams', 'AttendeesBySessionId', 'AttendeeSrv', 'SessionBySessionId',
-            function ($scope, $location, $routeParams, AttendeesBySessionId, Attendee, SessionBySessionId) {
+        .controller('AttendeesListCtrl', AttendeesListCtrl);
 
-                $scope.sessionVTID = $routeParams.sessionVTID || undefined;
-                $scope.session = {};
-                $scope.attendees = [];
+    //-------------------------------------------------------------------------------------------------
+    /* @ngInject */
+    AttendeesListCtrl.$inject = ['$location', '$routeParams', 'AttendeesBySessionId', 'AttendeeSrv', 'SessionBySessionId'];
+    function AttendeesListCtrl($location, $routeParams, AttendeesBySessionId, Attendee, SessionBySessionId) {
+        var vm = this;
+        vm.sessionVTID = $routeParams.sessionVTID || undefined;
+        vm.session = {};
+        vm.attendees = [];
 
-                var init = function () {
-                    if ($scope.sessionVTID) {
-                        $scope.attendees = AttendeesBySessionId.query({'sessionVTID': $scope.sessionVTID}) || [];
-                        $scope.session = SessionBySessionId.get({'sessionID': $scope.sessionVTID}) || {};
-                    } else {
-                        $scope.attendees = Attendee.query() || [];
-                    }
-                };
+        var init = function () {
+            if (vm.sessionVTID) {
+                vm.attendees = AttendeesBySessionId.query({'sessionVTID': vm.sessionVTID}) || [];
+                vm.session = SessionBySessionId.get({'sessionID': vm.sessionVTID}) || {};
+            } else {
+                vm.attendees = Attendee.query() || [];
+            }
+        };
 
-                $scope.refresh = function () {
-                    init();
-                };
+        vm.refresh = function () {
+            init();
+        };
 
-                $scope.select = function (attendee) {
-                    if (attendee._id) {
-                        $location.url('/attendee/' + attendee._id);
-                    }
-                };
+        vm.select = function (attendee) {
+            if (attendee._id) {
+                $location.url('/attendee/' + attendee._id);
+            }
+        };
 
-                // Got to attendees list for this session
-                $scope.gotoSessions = function () {
-                    $location.url('/session/');
-                };
+        // Got to attendees list for this session
+        vm.gotoSessions = function () {
+            $location.url('/session/');
+        };
 
-                // Validate is taken directly from the scope too
-                $scope.newAttendee = function () {
-                    $location.url('/newAttendee/');
-                };
+        // Validate is taken directly from the scope too
+        vm.newAttendee = function () {
+            $location.url('/newAttendee/');
+        };
 
-                // Validate is taken directly from the scope too
-                $scope.addAttendee = function (id) {
-                    $location.url('/session/' + id + '/addAttendees');
-                };
-                // Init controller
-                init();
-            }]);
+        // Validate is taken directly from the scope too
+        vm.addAttendee = function (id) {
+            $location.url('/session/' + id + '/addAttendees');
+        };
+        // Init controller
+        init();
+    }
 
 })();

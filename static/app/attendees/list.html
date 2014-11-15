@@ -1,10 +1,10 @@
-<h3 data-ng-show="sessionVTID">List of attendee(s) for session {{sessionVTID}}</h3>
-<h3 data-ng-hide="sessionVTID">List of person(s) </h3>
+<h3 data-ng-show="vm.sessionVTID">List of attendee(s) for session {{sessionVTID}}</h3>
+<h3 data-ng-hide="vm.sessionVTID">List of person(s) </h3>
 
 <div>
     <form>
-        <button data-ng-show="session._id" class="btn btn btn-success" data-ng-click="addAttendee(session._id)">+</button>
-        <button class="btn btn btn-primary" data-ng-click="newAttendee()">New person</button>
+        <button data-ng-show="vm.session._id" class="btn btn btn-success" data-ng-click="vm.addAttendee(vm.session._id)">+</button>
+        <button class="btn btn btn-primary" data-ng-click="vm.newAttendee()">New person</button>
     </form>
     <br/>
 
@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr data-ng-repeat="attendee in attendees" data-ng-click="select(attendee)" class="repeated-item">
+        <tr data-ng-repeat="attendee in vm.attendees" data-ng-click="vm.select(attendee)" class="repeated-item">
             <td>{{$index + 1}}</td>
             <td>{{attendee.company}}</td>
             <td>{{attendee.firstName}}</td>

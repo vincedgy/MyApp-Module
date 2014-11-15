@@ -47,9 +47,9 @@ body .container {
 /* ------------------------------------------------------- */
 /* Session List */
 /* ------------------------------------------------------- */
-.table-hover tbody tr:hover {
-  color: #4c7fc5;
-  cursor: hand;
+.table-hover tbody tr:hover > td {
+  cursor: pointer;
+  background-color: #c2dafb;
 }
 /* ------------------------------------------------------- */
 /* Session details */

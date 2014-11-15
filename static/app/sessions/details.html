@@ -1,8 +1,8 @@
 <h3 session-title></h3>
-<h3 data-ng-class='{isNotValid : ! session.sessionID}' data-ng-hide="session.sessionID">Session {{sessionID}} is not
+<h3 data-ng-class='{vm.isNotValid : ! vm.session.sessionID}' data-ng-hide="vm.session.sessionID">Session {{vm.sessionID}} is not
     valid</h3>
 
-<div data-ng-show="session._id">
+<div data-ng-show="vm.session._id">
     <form role="form" class="form-horizontal" novalidate>
         <div class="form-group">
 
@@ -11,7 +11,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="session.code"
-                       data-ng-model="session.code"
+                       data-ng-model="vm.session.code"
                        readonly/>
             </div>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="session.type"
-                       data-ng-model="session.type"
+                       data-ng-model="vm.session.type"
                        readonly/>
             </div>
 
@@ -32,7 +32,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="session.title"
-                       data-ng-model="session.title"
+                       data-ng-model="vm.session.title"
                        maxlength="64"
                        readonly/>
             </div>
@@ -43,7 +43,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="session.company"
-                       data-ng-model="session.company"
+                       data-ng-model="vm.session.company"
                        readonly/>
             </div>
 
@@ -55,7 +55,7 @@
                 <input class="form-control"
                        type="text"
                        id="session.duration"
-                       data-ng-model="session.duration"
+                       data-ng-model="vm.session.duration"
                        readonly/>
 
             </div>
@@ -67,7 +67,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="session.site"
-                       data-ng-model="session.site"
+                       data-ng-model="vm.session.site"
                        readonly/>
             </div>
 
@@ -78,7 +78,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="session.room"
-                       data-ng-model="session.room"
+                       data-ng-model="vm.session.room"
                        readonly/>
             </div>
 
@@ -90,7 +90,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="session.startDate"
-                       data-ng-model="session.startDate"
+                       data-ng-model="vm.session.startDate"
                        readonly/>
             </div>
 
@@ -101,17 +101,17 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="session.trainer"
-                       data-ng-model="session.trainer"
+                       data-ng-model="vm.session.trainer"
                        readonly/>
             </div>
 
         </div>
 
         <div>
-            <button type="button" class="btn btn btn-primary" data-ng-click="getAttendeesBySession(session)">Attendees for
-                {{session.code}}
+            <button type="button" class="btn btn btn-primary" data-ng-click="vm.getAttendeesBySession(vm.session)">Attendees for
+                {{vm.session.code}}
             </button>
-            <a class="btn btn btn-info" href="#editSession/{{session._id}}" role="button">Edit</a>
+            <a class="btn btn btn-info" href="#editSession/{{vm.session._id}}" role="button">Edit</a>
             <a class="btn btn btn-success" href="#session" role="button">Back to sessions</a>
 
         </div>

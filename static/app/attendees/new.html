@@ -1,5 +1,5 @@
-<h3 data-ng-hide="editMode">Create a new person</h3>
-<h3 data-ng-show="editMode">Editing person [{{attendee._id}}]</h3>
+<h3 data-ng-hide="vm.editMode">Create a new person</h3>
+<h3 data-ng-show="vm.editMode">Editing person [{{vm.attendee._id}}]</h3>
 <p>Please fil up this form, which will assist your entry</p>
 
 <form role="form" class="form-horizontal" novalidate>
@@ -9,7 +9,7 @@
         <div class="col-lg-10">
             <input class="form-control" type="text"
                    id="attendee.attendeeVTID"
-                   data-ng-model="attendee.attendeeVTID"/>
+                   data-ng-model="vm.attendee.attendeeVTID"/>
         </div>
     </div>
     <div class="form-group">
@@ -18,7 +18,7 @@
         <div class="col-lg-10">
             <input class="form-control" type="text"
                    id="attendee.title"
-                   data-ng-model="attendee.title"/>
+                   data-ng-model="vm.attendee.title"/>
         </div>
     </div>
     <div class="form-group">
@@ -27,7 +27,7 @@
         <div class="col-lg-10">
             <input class="form-control" type="text"
                    id="attendee.firstName"
-                   data-ng-model="attendee.firstName"/>
+                   data-ng-model="vm.attendee.firstName"/>
         </div>
     </div>
     <div class="form-group">
@@ -36,7 +36,7 @@
         <div class="col-lg-10">
             <input class="form-control" type="text"
                    id="attendee.lastName"
-                   data-ng-model="attendee.lastName"/>
+                   data-ng-model="vm.attendee.lastName"/>
         </div>
     </div>
     <div class="form-group">
@@ -45,7 +45,7 @@
         <div class="col-lg-10">
             <input class="form-control" type="text"
                    id="attendee.company"
-                   data-ng-model="attendee.company"/>
+                   data-ng-model="vm.attendee.company"/>
         </div>
     </div>
     <div class="form-group">
@@ -54,7 +54,7 @@
         <div class="col-lg-10">
             <input class="form-control" type="text"
                    id="attendee.phone"
-                   data-ng-model="attendee.phone"/>
+                   data-ng-model="vm.attendee.phone"/>
         </div>
     </div>
     <div class="form-group">
@@ -63,12 +63,12 @@
         <div class="col-lg-10">
             <input class="form-control" type="text"
                    id="attendee.email"
-                   data-ng-model="attendee.email"/>
+                   data-ng-model="vm.attendee.email"/>
         </div>
     </div>
 
-    <button class="btn btn btn-primary" data-ng-click="getAttendees(attendee)">Back</button>
-    <button class="btn btn btn-warning" data-ng-click="saveAttendee(attendee)">Save</button>
-    <button ng-show="attendee._id" class="btn btn btn-danger" data-ng-click="removeAttendee(attendee)">Remove</button>
-    <button class="btn btn btn" data-ng-click="cancel()">Cancel</button>
+    <button class="btn btn btn-primary" data-ng-click="vm.getAttendees(vm.attendee)">Back</button>
+    <button class="btn btn btn-warning" data-ng-click="vm.saveAttendee(vm.attendee)">Save</button>
+    <button ng-show="vm.attendee._id" class="btn btn btn-danger" data-ng-click="vm.removeAttendee(vm.attendee)">Remove</button>
+    <button class="btn btn btn" data-ng-click="vm.cancel()">Cancel</button>
 </form>

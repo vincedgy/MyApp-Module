@@ -5,7 +5,9 @@
         .module('app.session')
         .controller('AddAttendeesCtrl', AddAttendeesCtrl);
 
-            AddAttendeesCtrl.$inject = ['$routeParams', 'SessionSrv', 'AttendeeSrv', 'AttendeesBySessionId'];           
+            //-------------------------------------------------------------------------------------------------
+            /* @ngInject */
+            AddAttendeesCtrl.$inject = ['$routeParams', 'SessionSrv', 'AttendeeSrv', 'AttendeesBySessionId'];
             function AddAttendeesCtrl ($routeParams, SessionSrv, Attendee, AttendeesBySessionId) {
                 var vm = this;
                 var sessionID = $routeParams._id || undefined;

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html data-ng-app="app">
-
 <head>
     <% include head.ejs %>
 </head>
-
-<body data-ng-controller="MainCtrl as vm" data-ng-cloak>
-<ng-toast></ng-toast>
-
-<div class="container-fluid" id="pageContainer" >
+<body data-ng-controller="MainCtrl as vm">
+<span id="patience">Application is loading...</span>
+<div class="container-fluid ng-hide" id="pageContainer">
     <header>
         <% include header.ejs %>
     </header>
@@ -22,11 +19,11 @@
 
     </div>
 </div>
-
 <footer>
     <% include footer.ejs %>
 </footer>
 
-<% include scripts.ejs %>
 </body>
+<% include includes.ejs %>
+<% include scripts.ejs %>
 </html>

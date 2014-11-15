@@ -4,7 +4,7 @@
 
 (function () {
 
-    'user strict';
+    'use strict';
 
     /* configurations */
 

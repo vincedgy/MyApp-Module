@@ -4,33 +4,37 @@
     /* controllers */
 
     angular.module('app.session')
-            .controller('SessionsListCtrl', ['$scope', '$location', 'SessionSrv',
-                function ($scope, $location, SessionSrv) {
+        .controller('SessionsListCtrl', SessionsListCtrl);
 
-                $scope.sessions = [];
+    //-------------------------------------------------------------------------------------------------
+    /* @ngInject */
+    SessionsListCtrl.$inject = ['$scope', '$location', 'SessionSrv'];
+    function SessionsListCtrl($scope, $location, SessionSrv) {
+        var vm = this;
 
-                var init = function () {
-//                    $scope.listSessionsGrid.data = SessionSrv.query() || [];
-                    $scope.sessions = SessionSrv.query() || [];
-                    $scope.$parent.eventRefreshNBSession = true;
-                };
+        vm.sessions = [];
+
+        var init = function () {
+            vm.sessions = SessionSrv.query() || [];
+            $scope.$parent.eventRefreshNBSession = true;
+        };
 
 
-                // Validate is taken directly from the scope too
-                $scope.select = function (session) {
-                    if (session._id) {
-                        $location.url('/session/' + session._id);
-                    }
-                };
+        // Validate is taken directly from the scope too
+        vm.select = function (session) {
+            if (session._id) {
+                $location.url('/session/' + session._id);
+            }
+        };
 
-                // Validate is taken directly from the scope too
-                $scope.newSession = function () {
-                    $location.url('/newSession/');
-                };
+        // Validate is taken directly from the scope too
+        vm.newSession = function () {
+            $location.url('/newSession/');
+        };
 
-                // Init controller
-                init();
-            }]);
+        // Init controller
+        init();
+    }
 
 })
 ();

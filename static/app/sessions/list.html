@@ -1,7 +1,7 @@
 <h3>Training sessions</h3>
 <div>
     <form>
-        <button class="btn btn btn-primary" data-ng-click="newSession()">New session</button>
+        <button class="btn btn btn-primary" data-ng-click="vm.newSession()">New session</button>
     </form>
     <br/>
 
@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr data-ng-repeat="session in sessions" data-ng-click="select(session)" class="repeated-item">
+        <tr data-ng-repeat="session in vm.sessions" data-ng-click="vm.select(session)" class="repeated-item list">
             <td>{{$index + 1}}</td>
             <td>{{session.title}}</td>
             <td>{{session.sessionID}}</td>

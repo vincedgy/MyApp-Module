@@ -1,16 +1,16 @@
-<h3 ng-show="attendee._id" attendee-title></h3>
-<h3 ng-hide="attendee._id" class="isNotValid">No attendee found for {{attendeeVTID}}</h3>
+<h3 ng-show="vm.attendee._id" attendee-title></h3>
+<h3 ng-hide="vm.attendee._id" class="isNotValid">No attendee found for {{attendeeVTID}}</h3>
 
-<div ng-show="attendee._id">
+<div ng-show="vm.attendee._id">
 
     <form role="form" class="form-horizontal" novalidate>
         <div class="form-group">
-            <label class="col-lg-2 control-label" for="attendee.attendeeVTID">AttendeeVTID</label>
+            <label class="col-lg-2 control-label" for="vm.attendee.attendeeVTID">AttendeeVTID</label>
 
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="attendee.attendeeVTID"
-                       data-ng-model="attendee.attendeeVTID"
+                       data-ng-model="vm.attendee.attendeeVTID"
                        readonly/>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="attendee.title"
-                       data-ng-model="attendee.title"
+                       data-ng-model="vm.attendee.title"
                        readonly/>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="attendee.firstName"
-                       data-ng-model="attendee.firstName"
+                       data-ng-model="vm.attendee.firstName"
                        readonly/>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="attendee.lastName"
-                       data-ng-model="attendee.lastName"
+                       data-ng-model="vm.attendee.lastName"
                        readonly/>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="attendee.company"
-                       data-ng-model="attendee.company"
+                       data-ng-model="vm.attendee.company"
                        readonly/>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="attendee.phone"
-                       data-ng-model="attendee.phone"
+                       data-ng-model="vm.attendee.phone"
                        readonly/>
             </div>
         </div>
@@ -70,14 +70,14 @@
             <div class="col-lg-10">
                 <input class="form-control" type="text"
                        id="attendee.email"
-                       data-ng-model="attendee.email"
+                       data-ng-model="vm.attendee.email"
                        readonly/>
             </div>
         </div>
 
 
-        <button type="button" class="btn btn btn-success" data-ng-click="getSessions()">Sessions</button>
-        <a class="btn btn btn-info" href="#editAttendee/{{attendee._id}}" role="button">Edit</a>
-        <button type="button" class="btn btn btn-primary" data-ng-click="getAttendees()">Back</button>
+        <button type="button" class="btn btn btn-success" data-ng-click="vm.getSessions()">Sessions</button>
+        <a class="btn btn btn-info" href="#editAttendee/{{vm.attendee._id}}" role="button">Edit</a>
+        <button type="button" class="btn btn btn-primary" data-ng-click="vm.getAttendees()">Back</button>
     </form>
 </div>

@@ -2,62 +2,67 @@
     'use strict';
 
     angular.module('app.session')
-            .controller('SessionCtrl', ['$scope', '$location', '$routeParams', 'SessionSrv', 'config', function ($scope, $location, $routeParams, SessionSrv, config) {
+        .controller('SessionCtrl', SessionCtrl);
 
-                var passedId = $routeParams._id || undefined;
+    //-------------------------------------------------------------------------------------------------
+    /* @ngInject */
+    SessionCtrl.$inject = ['$location', '$routeParams', 'SessionSrv', '$scope'];
+    function SessionCtrl($location, $routeParams, SessionSrv, $scope) {
+        var vm = this;
 
-                $scope.session = {};
-                $scope.isValid = false;
-                $scope.editMode = false;
+        var passedId = $routeParams._id || undefined;
 
-                var currentLocation = $location.path().split('/')[1];
-                if (currentLocation === 'newSession') $scope.editMode = false;
-                if (currentLocation === 'editSession') $scope.editMode = true;
+        vm.session = {};
+        vm.isValid = false;
+        vm.editMode = false;
 
-                var init = function () {
-                    if (! passedId) $scope.session = new SessionSrv();
-                    else            $scope.session = SessionSrv.get({_id: passedId});
-                    $scope.isValid = $scope.session ? true : false;
-                };
+        var currentLocation = $location.path().split('/')[1];
+        if (currentLocation === 'newSession') vm.editMode = false;
+        if (currentLocation === 'editSession') vm.editMode = true;
 
-                // Got to attendees list for this session
-                $scope.getAttendeesBySession = function (session) {
-                    $location.url('/session/' + session.sessionID + '/attendee');
-                };
+        var init = function () {
+            if (!passedId) vm.session = new SessionSrv();
+            else            vm.session = SessionSrv.get({_id: passedId});
+            vm.isValid = vm.session ? true : false;
+        };
 
-                $scope.saveSession = function (session) {
-                    if (session.id && confirm('Please confirm')) {
-                        session.$update({_id: session._id}, function(savedSession) {
-                            $location.url('/session/'+savedSession._id);
-                        });
-                    } else {
-                        session.$save(function(savedSession) {
-                            $location.url('/session/'+savedSession._id);
-                        });
-                    }
-                    // Refresh the number of session
-                    $scope.$parent.eventRefreshNBSession = true;
-                };
+        // Got to attendees list for this session
+        vm.getAttendeesBySession = function (session) {
+            $location.url('/session/' + session.sessionID + '/attendee');
+        };
 
-                $scope.removeSession = function (session) {
-                    if (session._id && confirm('Please confirm session ' + session.sessionID + ' deletion.')) {
-                        session.$remove({_id: session._id}, function(removedSession) {
-                            $location.url('/session/');
-                        });
-                    }
-                };
+        vm.saveSession = function (session) {
+            if (session.id && confirm('Please confirm')) {
+                session.$update({_id: session._id}, function (savedSession) {
+                    $location.url('/session/' + savedSession._id);
+                });
+            } else {
+                session.$save(function (savedSession) {
+                    $location.url('/session/' + savedSession._id);
+                });
+            }
+            // Refresh the number of session
+            $scope.$parent.eventRefreshNBSession = true;
+        };
 
+        vm.removeSession = function (session) {
+            if (session._id && confirm('Please confirm session ' + session.sessionID + ' deletion.')) {
+                session.$remove({_id: session._id}, function (removedSession) {
+                    $location.url('/session/');
+                });
+            }
+        };
 
-                $scope.getSessions = function() {
-                    return $location.url('/session/');
-                };
+        vm.getSessions = function () {
+            return $location.url('/session/');
+        };
 
-                // Validate is taken directly from the scope too
-                $scope.cancel = function () {
-                    init();
-                };
+        // Validate is taken directly from the scope too
+        vm.cancel = function () {
+            init();
+        };
 
-                // Initialize controller
-                init();
-            }]);
+        // Initialize controller
+        init();
+    }
 })();
