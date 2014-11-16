@@ -32,7 +32,7 @@
          * 3rd Party modules
          */
         , 'ngplus'
-        , 'ui.bootstrap'
+//        , 'ui.bootstrap'
 
     ]);
 })();
