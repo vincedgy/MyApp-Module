@@ -1,60 +1,74 @@
-<h3>Add/Remove attendees for session {{vm.session.sessionID}}</h3>
+<h3>Add/Remove attendees for session <b>{{vm.session.sessionID}}</b></h3>
+
+<div class="row">
+
+    <div class="col-lg-5 form-group">
+        <h4><label for="availableAttendees" class="text-center">Available attendees</label></h4>
+        <input type="text" data-ng-model="filterName" placeholder="Filter attendees"/>
+        <select size="10" multiple
+                class="form-control center-block"
+                id="availableAttendees"
+                ng-model="vm.available"
+                ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesAvailable | filter : filterName">
+        </select>
+
+    </div>
+
+    <div class="col-lg-2">
+        <h4><label for="availableAttendees" class="text-center"></label></h4>
+        <button id="moveright"
+                type="button"
+                class="btn btn-default btn-md  center-block"
+                data-ng-click="vm.moveItem(vm.available, vm.attendeesAvailable, vm.attendeesOfSession)">
+            <span class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+        <button id="moverightall"
+               type="button"
+               class="btn btn-default btn-md  center-block"
+               data-ng-click="vm.moveAll(vm.attendeesAvailable, vm.attendeesOfSession)">
+            <span class="glyphicon glyphicon-forward"></span>
+        </button>
 
 
-    <form role="form" class="form-horizontal" novalidate>
+        <button id="moveleft"
+                type="button"
+                class="btn btn-default btn-md  center-block"
+                data-ng-click="vm.moveItem(vm.selected, vm.attendeesOfSession, vm.attendeesAvailable)">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+        <button id="movelefttall"
+                type="button"
+                class="btn btn-default btn-md  center-block"
+                data-ng-click="vm.moveAll(vm.attendeesOfSession, vm.attendeesAvailable)">
+            <span class="glyphicon glyphicon-backward"></span>
+        </button>
 
-        <div class="row">
-            <div class="col-lg-2">
-                <label for="availableAttendees">Available attendees</label>
-                <select size="10" multiple
-                        class="form-control"
-                        id="availableAttendees"
-                        ng-model="vm.available"
-                        ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesAvailable">
-                </select>
-            </div>
+    </div>
 
-            <div class="col-lg-2">
-                <button id="moveright"
-                        type="button"
-                        class="btn btn-default btn-md"
-                        data-ng-click="vm.moveItem(vm.available[0], vm.attendeesAvailable, vm.attendeesOfSession)">
-                    <span class="glyphicon glyphicon-arrow-right"></span>
-                </button>
-                <!--<input id="moverightall" type="button" value="Add All Clients" ng-click="moveAll(availableclients,selectedclients)" />-->
+    <div class="col-lg-5 form-group">
+        <h4><label for="inSessionAttendees">Session's attendees</label></h4>
+        <select size="10" multiple
+                class="form-control  center-block"
+                id="inSessionAttendees"
+                ng-model="vm.selected"
+                ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesOfSession">
+        </select>
 
-                <button id="moveleft"
-                        type="button"
-                        class="btn btn-default btn-md"
-                        data-ng-click="vm.moveItem(vm.selected[0], vm.attendeesOfSession, vm.attendeesAvailable)">
-                    <span class="glyphicon glyphicon-arrow-left"></span>
-                </button>
-                <!--<input id="moveleftall" type="button" value="Remove All Clients" ng-click="moveAll(selectedclients,availableclients)" />-->
+    </div>
 
-            </div>
+    <!--<div>-->
+    <!--<div>Selected: {{vm.selected}}</div>-->
+    <!--<div>Available: {{vm.available}}</div>-->
+    <!--</div>-->
 
-            <div class="col-lg-2">
-                <label for="inSessionAttendees">Session's attendees</label>
-                <select size="10" multiple
-                        class="form-control"
-                        id="inSessionAttendees"
-                        ng-model="vm.selected"
-                        ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesOfSession">
-                </select>
+</div>
 
-            </div>
-
-            <!--<div>-->
-            <!--<div>Selected: {{vm.selected}}</div>-->
-            <!--<div>Available: {{vm.available}}</div>-->
-            <!--</div>-->
-
+<form role="form">
+    <div>
+        <div class="input-group">
+            <button class="btn btn btn-warning" data-ng-click="vm.save()">Save</button>
+            &nbsp;
+            <button class="btn btn btn" data-ng-click="vm.cancel()">Cancel</button>
         </div>
-
-        <div class="row">
-            <div class="input-group">
-                <button class="btn btn btn-warning" data-ng-click="vm.save()">Save</button>
-                <button class="btn btn btn" data-ng-click="vm.cancel()">Cancel</button>
-            </div>
-        </div>
-    </form>
+    </div>
+</form>
