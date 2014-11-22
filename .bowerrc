@@ -1,4 +1,6 @@
 {
     "directory": "static/components"
     , "analytics": false
+    , "proxy" : "http://A6252532:Jha18adm-2908@uk-proxy-01.systems.uk.hsbc:80"
+    , "https-proxy": "http://A6252532:Jha18adm-2908@uk-proxy-01.systems.uk.hsbc:80"
 }

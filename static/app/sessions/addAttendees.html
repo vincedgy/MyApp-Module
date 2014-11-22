@@ -3,13 +3,15 @@
 <div class="row">
 
     <div class="col-lg-5 form-group">
-        <h4><label for="availableAttendees" class="text-center">Available attendees</label></h4>
-        <input type="text" data-ng-model="filterName" placeholder="Filter attendees"/>
+        <h4><label for="availableAttendees" class="text-center">Available attendees
+            ({{vm.attendeesAvailable.length}})</label></h4>
+        <input type="text" data-ng-model="filterAttendee" placeholder="Filter attendees"/>
         <select size="10" multiple
                 class="form-control center-block"
                 id="availableAttendees"
                 ng-model="vm.available"
-                ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesAvailable | filter : filterName">
+                ng-class="{'bgFiltered' : filterAttendee}"
+                ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesAvailable | filter : filterAttendee">
         </select>
 
     </div>
@@ -19,13 +21,13 @@
         <button id="moveright"
                 type="button"
                 class="btn btn-default btn-md  center-block"
-                data-ng-click="vm.moveItem(vm.available, vm.attendeesAvailable, vm.attendeesOfSession)">
+                data-ng-click="vm.moveItem(vm.available, vm.attendeesAvailable, vm.attendeesOfSession, true)">
             <span class="glyphicon glyphicon-arrow-right"></span>
         </button>
         <button id="moverightall"
-               type="button"
-               class="btn btn-default btn-md  center-block"
-               data-ng-click="vm.moveAll(vm.attendeesAvailable, vm.attendeesOfSession)">
+                type="button"
+                class="btn btn-default btn-md  center-block"
+                data-ng-click="vm.moveAll(vm.attendeesAvailable, vm.attendeesOfSession)">
             <span class="glyphicon glyphicon-forward"></span>
         </button>
 
@@ -33,7 +35,7 @@
         <button id="moveleft"
                 type="button"
                 class="btn btn-default btn-md  center-block"
-                data-ng-click="vm.moveItem(vm.selected, vm.attendeesOfSession, vm.attendeesAvailable)">
+                data-ng-click="vm.moveItem(vm.selected, vm.attendeesOfSession, vm.attendeesAvailable, false)">
             <span class="glyphicon glyphicon-arrow-left"></span>
         </button>
         <button id="movelefttall"
@@ -46,26 +48,21 @@
     </div>
 
     <div class="col-lg-5 form-group">
-        <h4><label for="inSessionAttendees">Session's attendees</label></h4>
+        <h4><label for="inSessionAttendees">Session's attendees ({{vm.attendeesOfSession.length}})</label></h4>
+        <input type="text" data-ng-model="filterInSession" placeholder="Filter in session"/>
         <select size="10" multiple
                 class="form-control  center-block"
+                ng-class="{'bgFiltered' : filterInSession}"
                 id="inSessionAttendees"
                 ng-model="vm.selected"
-                ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesOfSession">
+                ng-options="attendee as attendee.firstName + ' ' + attendee.lastName for attendee in vm.attendeesOfSession | filter : filterInSession">
         </select>
 
     </div>
-
-    <!--<div>-->
-    <!--<div>Selected: {{vm.selected}}</div>-->
-    <!--<div>Available: {{vm.available}}</div>-->
-    <!--</div>-->
-
 </div>
-
 <form role="form">
     <div>
-        <div class="input-group">
+        <div class="input-group" ng-show="vm.needToSave">
             <button class="btn btn btn-warning" data-ng-click="vm.save()">Save</button>
             &nbsp;
             <button class="btn btn btn" data-ng-click="vm.cancel()">Cancel</button>

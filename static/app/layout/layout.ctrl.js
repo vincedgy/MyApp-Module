@@ -43,8 +43,6 @@
         var vm = this;
         vm.helloMessage = 'Hello World !';
         vm.message = 'Please welcome to session management';
-        // TEST
-        toastr.info('Are you the 6 fingered man?');
 
         // Nb Sessions
         vm.nbSessions = 0;

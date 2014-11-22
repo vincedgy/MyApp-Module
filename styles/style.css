@@ -60,6 +60,9 @@ body .container {
 .isNotValid {
   color: red;
 }
+.bgFiltered option {
+  background-color: #c2dafb !important;
+}
 /* ------------------------------------------------------- */
 /* Welcome page  */
 /* ------------------------------------------------------- */
