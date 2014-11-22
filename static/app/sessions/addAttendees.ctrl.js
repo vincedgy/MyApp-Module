@@ -7,8 +7,8 @@
 
     //-------------------------------------------------------------------------------------------------
     /* @ngInject */
-    AddAttendeesCtrl.$inject = ['$route', '$routeParams', 'SessionSrv', 'AttendeeSrv', 'AttendeesBySessionId', 'toastr'];
-    function AddAttendeesCtrl($route, $routeParams, SessionSrv, Attendee, AttendeesBySessionId,toastr) {
+    AddAttendeesCtrl.$inject = ['$location', '$route', '$routeParams', 'SessionSrv', 'AttendeeSrv', 'AttendeesBySessionId', 'toastr'];
+    function AddAttendeesCtrl($location, $route, $routeParams, SessionSrv, Attendee, AttendeesBySessionId,toastr) {
         var vm = this;
         var sessionID = $routeParams._id || undefined;
         vm.needToSave = false;
@@ -55,8 +55,8 @@
                     to.push(item);
 
                     // Save item
-                    if (inSession) saveItem(item,vm.session)
-                    else saveItem(item)
+                    if (inSession) saveItem(item,vm.session);
+                    else saveItem(item);
                 }
             });
         };
@@ -82,7 +82,7 @@
                 });
             }
             toastr.info('Saving attendee ' + people._id);
-        }
+        };
 
         vm.save = function () {
             if (vm.needToSave) {
@@ -106,6 +106,12 @@
         vm.cancel = function () {
             $route.reload();
             toastr.info('Cancelling and refresh the lists');
+        };
+
+        vm.getDetails = function(attendees){
+            if (attendees[0]._id) {
+                $location.url('/attendee/' + attendees[0]._id);
+            }
         };
 
         // Initialize controller
