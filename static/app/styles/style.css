@@ -93,9 +93,9 @@ body {
   text-transform: capitalize;
 }
 #mainContainer {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
 }
 #mainContainer form label:not(.radio)::after {
   content: ' : ';
@@ -163,8 +163,8 @@ body {
   background-color: #78FA89;
 }
 .ngplus-overlay-background {
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   padding-left: 100px;
   position: absolute;
   z-index: 10000;

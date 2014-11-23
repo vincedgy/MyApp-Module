@@ -25,7 +25,7 @@
 
     //-------------------------------------------------------------------------------------------------
     /* @ngInject */
-    SessionBySessionId.$inject = ['$resource', 'config']
+    SessionBySessionId.$inject = ['$resource', 'config'];
     function SessionBySessionId($resource, config) {
         return $resource(
                 config.dirs.api.prefix + config.dirs.api.sessionBySessionID,
