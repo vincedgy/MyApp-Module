@@ -16,7 +16,7 @@
     AttendeeSrv.$inject = ['$resource', 'config'];
     function AttendeeSrv($resource, config) {
         return $resource(
-                config.dirs.api.prefix + config.dirs.api.attendee,
+                '/api/attendee/:_id',
             {_id: '@_id'},
             {
                 update: {method: 'PUT', params: {_id: '@_id'}},
@@ -29,7 +29,7 @@
     AttendeesBySessionId.$inject = ['$resource', 'config'];
     function AttendeesBySessionId($resource, config) {
         return $resource(
-                config.dirs.api.prefix + config.dirs.api.attendeesBySession,
+                '/api/session/:sessionVTID/attendee',
             {sessionVTID: '@sessionVTID', attendeeVTID: '@attendeeVTID'}
         );
     }

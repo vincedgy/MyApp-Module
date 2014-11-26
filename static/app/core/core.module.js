@@ -18,6 +18,7 @@
          */
         'ngAnimate'
         , 'ngRoute'
+        , 'ui.router'
         , 'ngSanitize'
         , 'ngResource'
 

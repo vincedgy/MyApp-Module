@@ -6,19 +6,18 @@
 
     //-------------------------------------------------------------------------------------------------
     /* @ngInject */
-    SessionCtrl.$inject = ['$location', '$routeParams', 'SessionSrv', '$scope'];
-    function SessionCtrl($location, $routeParams, SessionSrv, $scope) {
+    SessionCtrl.$inject = ['$state', 'SessionSrv', '$scope'];
+    function SessionCtrl($state, SessionSrv, $scope) {
         var vm = this;
 
-        var passedId = $routeParams._id || undefined;
+        var passedId = $state.params._id || undefined;
 
         vm.session = {};
         vm.isValid = false;
         vm.editMode = false;
 
-        var currentLocation = $location.path().split('/')[1];
-        if (currentLocation === 'newSession') vm.editMode = false;
-        if (currentLocation === 'editSession') vm.editMode = true;
+        if ($state.includes('newSession')) vm.editMode = false;
+        if ($state.includes('editSession')) vm.editMode = true;
 
         var init = function () {
             if (!passedId) vm.session = new SessionSrv();
@@ -28,17 +27,17 @@
 
         // Got to attendees list for this session
         vm.getAttendeesBySession = function (session) {
-            $location.url('/session/' + session.sessionID + '/attendee');
+            $state.go('/session/' + session.sessionID + '/attendee');
         };
 
         vm.saveSession = function (session) {
             if (session.id && confirm('Please confirm')) {
                 session.$update({_id: session._id}, function (savedSession) {
-                    $location.url('/session/' + savedSession._id);
+                    $state.go('/session/' + savedSession._id);
                 });
             } else {
                 session.$save(function (savedSession) {
-                    $location.url('/session/' + savedSession._id);
+                    $state.go('/session/' + savedSession._id);
                 });
             }
             // Refresh the number of session
@@ -48,13 +47,13 @@
         vm.removeSession = function (session) {
             if (session._id && confirm('Please confirm session ' + session.sessionID + ' deletion.')) {
                 session.$remove({_id: session._id}, function (removedSession) {
-                    $location.url('/session/');
+                    $state.go('/session/');
                 });
             }
         };
 
         vm.getSessions = function () {
-            return $location.url('/session/');
+            return $state.go('/session/');
         };
 
         // Validate is taken directly from the scope too
