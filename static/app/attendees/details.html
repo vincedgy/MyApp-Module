@@ -1,5 +1,5 @@
-<h3 ng-show="vm.attendee._id" attendee-title></h3>
-<h3 ng-hide="vm.attendee._id" class="isNotValid">No attendee found for {{attendeeVTID}}</h3>
+<h3 attendee-title></h3>
+<h3 data-ng-class='{vm.isNotValid : ! vm.attendee._id}' data-ng-hide="vm.attendee._id">No attendee found for {{vm.params._id}}</h3>
 
 <div ng-show="vm.attendee._id">
 

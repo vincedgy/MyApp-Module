@@ -19,17 +19,17 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li data-ng-class="{ active: vm.isActive('home')}">
-                    <a href="/#/home">
+                    <a ui-sref="home">
                         <i class="fa fa-home solo fa-lg"></i>&nbsp; Home
                     </a>
                 </li>
                 <li data-ng-class="{ active: vm.isActive('session')}">
-                    <a href="/#/session">
+                    <a ui-sref="sessionsList">
                         <i class="fa fa-book solo fa-lg"></i>&nbsp;Sessions
                     </a>
                 </li>
                 <li data-ng-class="{ active: vm.isActive('attendee')}">
-                    <a href="/#/attendee">
+                    <a ui-sref="attendeesList">
                         <i class="fa fa-group solo fa-lg"></i>&nbsp;People
                     </a>
                 </li>
@@ -45,19 +45,19 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li data-ng-class="{ active: vm.isActive('about')}">
-                    <a href="/#/about">
+                    <a ui-sref="about">
                         <i class="fa fa-question-circle solo fa-lg"></i>&nbsp; About
                     </a>
                 </li>
                 <li data-ng-class="{ active: vm.isActive('contact')}">
-                    <a href="/#/contact">
+                    <a ui-sref="contact">
                         <i class="glyphicon glyphicon-phone-alt solo glyphicon-lg"></i>&nbsp; Contact
                     </a>
                 </li>
 
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">More...<b class="caret"></b></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">More...<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Admin</a></li>
                         <li class="divider"></li>

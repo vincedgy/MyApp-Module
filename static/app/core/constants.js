@@ -25,12 +25,21 @@
             'dirs': {
                 'base': 'app/',
                 'api': {
-                    'prefix': '/api'
+                    'prefix': '/api',
                     // Session API
-                    , 'sessions': '/session', 'session': '/session/:_id', 'sessionBySessionID': '/sessionBSI/:sessionID', 'newSession': '/newSession', 'editSession': '/editSession/:_id', 'addAttendees': '/session/:_id/addAttendees'
+                    'sessions': '/session',
+                    'session': '/session/:_id',
+                    'sessionBySessionID': '/sessionBSI/:sessionID',
+                    'newSession': '/newSession',
+                    'editSession': '/editSession/:_id',
+                    'addAttendees': '/session/:_id/addAttendees',
 
                     // Attendee API
-                    , 'attendees': '/attendee', 'attendee': '/attendee/:_id', 'attendeesBySession': '/session/:sessionVTID/attendee', 'newAttendee': '/newAttendee', 'editAttendee': '/editAttendee/:_id'
+                    'attendees': '/attendee',
+                    'attendee': '/attendee/:_id',
+                    'attendeesBySession': '/session/:sessionVTID/attendee',
+                    'newAttendee': '/newAttendee',
+                    'editAttendee': '/editAttendee/:_id'
                 },
                 'views': {
                     'partials': 'partials/', 'layout': 'layout/', 'sessions': 'sessions/', 'attendees': 'attendees/'
