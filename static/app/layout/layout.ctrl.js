@@ -38,11 +38,10 @@
     // --------------------------------------------------------------------------
     // mainCtrl
     /* @ngInject */
-    MainCtrl.$inject = ['toastr', 'SessionSrv', 'AttendeeSrv', '$scope'];
-    function MainCtrl(toastr, SessionSrv, AttendeeSrv, $scope) {
+    MainCtrl.$inject = ['SessionSrv', 'AttendeeSrv', '$scope'];
+    function MainCtrl(SessionSrv, AttendeeSrv, $scope) {
         var vm = this;
         vm.helloMessage = 'Hello World !';
-        vm.message = 'Please welcome to session management';
 
         // Nb Sessions
         vm.nbSessions = 0;
