@@ -75,6 +75,9 @@ module.exports = function(express,config, app) {
     // Delete one existing attendee
     router.delete('/api/attendee/:id',require(path.join(config.apiDir, 'deleteAttendee.js')));
 
+    // Get Numbers
+    router.get('/api/nb',require(path.join(config.apiDir, 'getNbRows.js')));
+
     router.get('*', function(req, res, next) {
         var err = new Error();
         err.status = 404;

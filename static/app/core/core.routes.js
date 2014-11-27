@@ -25,7 +25,9 @@
             // Home //
             .state('home', {
                 url: '/home',
-                templateUrl: config.dirs.base + config.dirs.views.partials + 'welcome.html', controller: 'HelloCtrl', controllerAs: 'vm'
+                templateUrl: config.dirs.base + config.dirs.views.partials + 'welcome.html',
+                controller: 'HelloCtrl',
+                controllerAs: 'vm'
             })
 
             // Home //
