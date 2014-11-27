@@ -8,8 +8,8 @@
 
     //-------------------------------------------------------------------------------------------------
     /* @ngInject */
-    SessionsListCtrl.$inject = ['$scope', '$location', 'SessionSrv'];
-    function SessionsListCtrl($scope, $location, SessionSrv) {
+    SessionsListCtrl.$inject = ['$scope', '$state', 'SessionSrv'];
+    function SessionsListCtrl($scope, $state, SessionSrv) {
         var vm = this;
 
         vm.sessions = [];
@@ -23,13 +23,13 @@
         // Validate is taken directly from the scope too
         vm.select = function (session) {
             if (session._id) {
-                $location.url('/session/' + session._id);
+                $state.go('sessionDetails', {'_id': session._id});
             }
         };
 
         // Validate is taken directly from the scope too
         vm.newSession = function () {
-            $location.url('/newSession/');
+            $state.go('newSession');
         };
 
         // Init controller

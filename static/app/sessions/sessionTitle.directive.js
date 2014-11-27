@@ -1,7 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('app.session')
+    angular
+        .module('app.session')
         .directive('sessionTitle', sessionTitle);
 
     function sessionTitle() {

@@ -7,10 +7,10 @@
 
     //-------------------------------------------------------------------------------------------------
     /* @ngInject */
-    AddAttendeesCtrl.$inject = ['$location', '$route', '$routeParams', 'SessionSrv', 'AttendeeSrv', 'AttendeesBySessionId', 'toastr'];
-    function AddAttendeesCtrl($location, $route, $routeParams, SessionSrv, Attendee, AttendeesBySessionId,toastr) {
+    AddAttendeesCtrl.$inject = ['$state', 'SessionSrv', 'AttendeeSrv', 'AttendeesBySessionId', 'toastr'];
+    function AddAttendeesCtrl($state, SessionSrv, Attendee, AttendeesBySessionId,toastr) {
         var vm = this;
-        var sessionID = $routeParams._id || undefined;
+        var sessionID = $state.params._id || undefined;
         vm.needToSave = false;
         vm.session = {};
         vm.available = [];
@@ -104,13 +104,13 @@
         };
 
         vm.cancel = function () {
-            $route.reload();
+            $state.reload();
             toastr.info('Cancelling and refresh the lists');
         };
 
         vm.getDetails = function(attendees){
             if (attendees[0]._id) {
-                $location.url('/attendee/' + attendees[0]._id);
+                $state.go('attendeeDetails',{'_id':attendees[0]._id});
             }
         };
 

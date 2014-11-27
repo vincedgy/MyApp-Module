@@ -6,10 +6,10 @@
 
     //-------------------------------------------------------------------------------------------------
     /* @ngInject */
-    AttendeesListCtrl.$inject = ['$location', '$routeParams', 'AttendeesBySessionId', 'AttendeeSrv', 'SessionBySessionId'];
-    function AttendeesListCtrl($location, $routeParams, AttendeesBySessionId, Attendee, SessionBySessionId) {
+    AttendeesListCtrl.$inject = ['$state', 'AttendeesBySessionId', 'AttendeeSrv', 'SessionBySessionId'];
+    function AttendeesListCtrl($state, AttendeesBySessionId, Attendee, SessionBySessionId) {
         var vm = this;
-        vm.sessionVTID = $routeParams.sessionVTID || undefined;
+        vm.sessionVTID = $state.params.sessionVTID || undefined;
         vm.session = {};
         vm.attendees = [];
 
@@ -28,23 +28,23 @@
 
         vm.select = function (attendee) {
             if (attendee._id) {
-                $location.url('/attendee/' + attendee._id);
+                $state.go('attendeeDetails', {'_id':attendee._id});
             }
         };
 
         // Got to attendees list for this session
         vm.gotoSessions = function () {
-            $location.url('/session/');
+            $state.go('sessionsList');
         };
 
         // Validate is taken directly from the scope too
         vm.newAttendee = function () {
-            $location.url('/newAttendee/');
+            $state.go('newAttendee');
         };
 
         // Validate is taken directly from the scope too
         vm.addAttendee = function (id) {
-            $location.url('/session/' + id + '/addAttendees');
+            $state.go('attendeesForSession', {'_id': id});
         };
         // Init controller
         init();

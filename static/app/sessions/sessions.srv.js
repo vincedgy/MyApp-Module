@@ -15,7 +15,7 @@
     SessionSrv.$inject = ['$resource', 'config'];
     function SessionSrv($resource, config) {
         return $resource(
-                config.dirs.api.prefix + config.dirs.api.session,
+                '/api/session/:_id',
             {_id: '@id'},
             {
                 update: {method: 'PUT', params: {_id: '@id'}},
@@ -28,7 +28,7 @@
     SessionBySessionId.$inject = ['$resource', 'config'];
     function SessionBySessionId($resource, config) {
         return $resource(
-                config.dirs.api.prefix + config.dirs.api.sessionBySessionID,
+                '/api/sessionBSI/:sessionID',
             {sessionID: '@sessionID'});
     }
 
