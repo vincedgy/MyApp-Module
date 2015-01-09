@@ -1,4 +1,4 @@
-<h3 data-ng-show="vm.sessionVTID">List of attendee(s) for session {{sessionVTID}}</h3>
+<h3 data-ng-show="vm.sessionVTID">List of attendee(s) for session {{vm.sessionVTID}}</h3>
 <h3 data-ng-hide="vm.sessionVTID">List of person(s) </h3>
 
 <div>
@@ -30,6 +30,6 @@
     </table>
 
     <form>
-        <a class="btn btn btn-info" href="#session" role="button">Back to sessions</a>
+        <button type="button" class="btn btn btn-success" data-ng-click="vm.getSessions()">Back to Sessions</button>
     </form>
 </div>

@@ -1,5 +1,5 @@
 <h3 session-title></h3>
-<h3 data-ng-class='{vm.isNotValid : ! vm.session.sessionID}' data-ng-hide="vm.session.sessionID">Session {{vm.sessionID}} is not
+<h3 data-ng-class='{ isNotValid : !vm.session.sessionID}' data-ng-hide="vm.session.sessionID">Session {{vm.sessionID}} is not
     valid</h3>
 
 <div data-ng-show="vm.session._id">
@@ -112,7 +112,8 @@
                 {{vm.session.code}}
             </button>
             <a class="btn btn btn-info" href="#editSession/{{vm.session._id}}" role="button">Edit</a>
-            <a class="btn btn btn-success" href="#session" role="button">Back to sessions</a>
+
+            <button type="button" class="btn btn btn-success" data-ng-click="vm.getSessions()">Back to Sessions</button>
 
         </div>
     </form>

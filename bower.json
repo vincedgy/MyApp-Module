@@ -30,12 +30,12 @@
   ],
   "dependencies": {
     "requirejs" : null,
-    "angular": "~1.3.2",
-    "angular-animate": "~1.3.2",
+    "angular": "~1.3.8",
+    "angular-animate": "~1.3.8",
     "angular-bootstrap": "~0.11.2",
-    "angular-resource": "~1.3.2",
-    "angular-route": "~1.3.2",
-    "angular-sanitize": "~1.3.2",
+    "angular-resource": "~1.3.8",
+    "angular-route": "~1.3.8",
+    "angular-sanitize": "~1.3.8",
     "angular-ui-grid": "~3.0.0",
     "angular-ui-router": "~0.2.11",
     "bootstrap": "~3.2.0",
@@ -48,6 +48,6 @@
     "toastr": "~2.1.0"
   },
   "resolutions": {
-    "angular": "~1.3.2"
+    "angular": "~1.3.8"
   }
 }

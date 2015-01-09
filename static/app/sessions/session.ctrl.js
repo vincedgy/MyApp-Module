@@ -27,17 +27,19 @@
 
         // Got to attendees list for this session
         vm.getAttendeesBySession = function (session) {
-            $state.go('/session/' + session.sessionID + '/attendee');
+            $state.go('attendeesListBySession', {'_id':session.sessionID});
         };
 
         vm.saveSession = function (session) {
             if (session.id && confirm('Please confirm')) {
                 session.$update({_id: session._id}, function (savedSession) {
-                    $state.go('/session/' + savedSession._id);
+                    $state.go('sessionDetails', {'_id':savedSession._id});
+                    //$state.go('/session/' + savedSession._id);
                 });
             } else {
                 session.$save(function (savedSession) {
-                    $state.go('/session/' + savedSession._id);
+                    $state.go('sessionDetails', {'_id':savedSession._id});
+                    //$state.go('/session/' + savedSession._id);
                 });
             }
             // Refresh the number of session
@@ -47,13 +49,16 @@
         vm.removeSession = function (session) {
             if (session._id && confirm('Please confirm session ' + session.sessionID + ' deletion.')) {
                 session.$remove({_id: session._id}, function (removedSession) {
-                    $state.go('/session/');
+                    vm.getSessions();
+                    //$state.go('sessionsList');
+                    //$state.go('/session/');
                 });
             }
         };
 
         vm.getSessions = function () {
-            return $state.go('/session/');
+            $state.go('sessionsList');
+            //return $state.go('/session/');
         };
 
         // Validate is taken directly from the scope too

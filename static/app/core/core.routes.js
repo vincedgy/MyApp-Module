@@ -77,7 +77,7 @@
                 templateUrl: config.dirs.base + config.dirs.views.attendees + 'list.html', controller: 'AttendeesListCtrl', controllerAs: 'vm'
             })
             .state('attendeesListBySession', {
-                url: '/session/:_id/attendees',
+                url: '/session/:_id/attendee',
                 templateUrl: config.dirs.base + config.dirs.views.attendees + 'list.html', controller: 'AttendeesListCtrl', controllerAs: 'vm'
             })
             .state('attendeeDetails', {

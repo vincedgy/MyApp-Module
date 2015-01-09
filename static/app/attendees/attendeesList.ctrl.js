@@ -9,7 +9,7 @@
     AttendeesListCtrl.$inject = ['$state', 'AttendeesBySessionId', 'AttendeeSrv', 'SessionBySessionId'];
     function AttendeesListCtrl($state, AttendeesBySessionId, Attendee, SessionBySessionId) {
         var vm = this;
-        vm.sessionVTID = $state.params.sessionVTID || undefined;
+        vm.sessionVTID = $state.params._id || undefined;
         vm.session = {};
         vm.attendees = [];
 
@@ -33,7 +33,7 @@
         };
 
         // Got to attendees list for this session
-        vm.gotoSessions = function () {
+        vm.getSessions = function () {
             $state.go('sessionsList');
         };
 
