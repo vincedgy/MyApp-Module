@@ -9,7 +9,7 @@ The static side is made of AngularJS & BootStrap, and other features.
 
 All in one for education purpose.
 
-Please check out here : <https:/github.com/vincedgy/MyApp>
+Please check out here : <https://github.com/vincedgy/MyApp-Module>
 
 # Installation
 
